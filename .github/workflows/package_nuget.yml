@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Build Bank.Domain
+        run: dotnet build Bank/Bank.Domain/Bank.Domain.csproj -c Release
       - name: Ejecutar pruebas
         run: dotnet test Bank/Bank.sln --collect:"XPlat Code Coverage"
       - name: SonarCloud Scan
@@ -13,7 +15,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: .
-      - name: Construir paquete NuGet
+      - name: Pack Bank.Domain
         run: dotnet pack Bank/Bank.Domain/Bank.Domain.csproj -c Release -o nuget
       - name: Listar paquetes generados
         run: ls -l nuget
