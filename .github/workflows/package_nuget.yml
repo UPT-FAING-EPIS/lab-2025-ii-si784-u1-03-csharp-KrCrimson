@@ -14,6 +14,6 @@ jobs:
         with:
           projectBaseDir: .
       - name: Construir paquete NuGet
-        run: dotnet pack Bank/Bank.Domain/Bank.Domain.csproj -c Release -o nuget
+        run: dotnet pack Bank/Bank.WebApi/Bank.WebApi.csproj -c Release -o nuget
       - name: Publicar paquete en GitHub Packages
         run: dotnet nuget push nuget/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
