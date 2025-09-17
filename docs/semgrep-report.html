@@ -1,0 +1,47 @@
+
+            <html>
+                <head>
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+                    <style>body{ margin:0 100; background:whitesmoke; }</style>
+                </head>
+<!-- 
+{
+  "meta": {
+    "commit_author": null,
+    "commit_branch": null,
+    "commit_date": null,
+    "commit_sha": null,
+    "commit_title": null,
+    "filtered_message_count": 1,
+    "mr_iid": null,
+    "mr_source_branch": null,
+    "mr_target_branch": null,
+    "mr_title": null,
+    "pipeline_date": null,
+    "pipeline_job_date": null,
+    "pipeline_job_image": null,
+    "pipeline_job_name": null,
+    "pipeline_job_stage": null,
+    "pipeline_job_started_by_email": null,
+    "pipeline_job_started_by_id": null,
+    "pipeline_job_started_by_login": null,
+    "pipeline_job_started_by_name": null,
+    "pipeline_job_url": null,
+    "pipeline_project_group": null,
+    "pipeline_project_group_root": null,
+    "pipeline_project_name": null,
+    "pipeline_project_path": null,
+    "pipeline_project_path_slug": null,
+    "pipeline_project_url": null,
+    "pipeline_server_url": null,
+    "pipeline_url": null,
+    "report_date": "2025-09-17 10:57:22.240956",
+    "report_from_ci": false,
+    "total_message_count": 1
+  }
+}
+-->
+                <body>
+            <table id="info-table" class="table table-bordered table-hover"><thead><tr><th>tool</th><th>code</th><th>severity</th><th>confidence</th><th>function</th><th>file</th><th>line</th><th>position</th><th>message</th></tr></thead><tbody><tr><td>semgrep</td><td>html.security.audit.missing-integrity.missing-integrity</td><td>WARNING</td><td>LOW</td><td>unknown</td><td>semgrep-report.html</td><td>4</td><td>21</td><td>This tag is missing an &#x27;integrity&#x27; subresource integrity attribute. The &#x27;integrity&#x27; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you�re telling the browser to fetch in the &#x27;integrity&#x27; attribute for all externally hosted files.</td></tr></tbody></table>
+                </body>
+            </html>
