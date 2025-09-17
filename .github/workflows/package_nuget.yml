@@ -1,0 +1,19 @@
+name: Package NuGet
+on: push
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ejecutar pruebas
+        run: dotnet test --collect:"XPlat Code Coverage"
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectKey: krcrimson_semgrep
+          organization: krcrimson
+          token: ${{ secrets.SONAR_TOKEN }}
+      - name: Construir paquete NuGet
+        run: dotnet pack Bank/Bank.Domain/Bank.Domain.csproj -c Release -o nuget
+      - name: Publicar paquete en GitHub Packages
+        run: dotnet nuget push nuget/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}

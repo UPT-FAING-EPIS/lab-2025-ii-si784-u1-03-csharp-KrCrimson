@@ -1,0 +1,35 @@
+name: Semgrep Analysis
+on: push
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Python y prospector-html
+        run: |
+          apt-get update && apt-get install -y python3-pip
+          pip install prospector2html
+      - name: Semgrep scan (SARIF y JSON)
+        run: |
+          semgrep scan --config="p/default" --sarif --output=report.sarif --metrics=off
+          semgrep scan --config="p/default" --json --output=semgrep.json
+      - name: Generar reporte HTML de Semgrep
+        run: prospector-html --input semgrep.json --output semgrep-report.html --filter semgrep
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: report.sarif
+      - name: Publicar reporte HTML en GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          keep_files: true
+      - name: Publicar reporte HTML en GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          keep_files: true

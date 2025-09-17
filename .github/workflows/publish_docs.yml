@@ -1,0 +1,16 @@
+name: Release Version
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Construir paquete
+        run: dotnet pack Bank/Bank.Domain/Bank.Domain.csproj -c Release -o nuget
+      - name: Crear Release en GitHub
+        uses: softprops/action-gh-release@v1
+        with:
+          files: nuget/*.nupkg
