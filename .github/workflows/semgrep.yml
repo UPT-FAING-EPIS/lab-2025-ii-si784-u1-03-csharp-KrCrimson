@@ -3,14 +3,13 @@ on: push
 jobs:
   security:
     runs-on: ubuntu-latest
-    container:
-      image: semgrep/semgrep
     steps:
       - uses: actions/checkout@v4
-      - name: Instalar Python y prospector-html
+      - name: Instalar Python y dependencias
         run: |
-          apt-get update && apt-get install -y python3-pip
-          pip install prospector2html
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip install semgrep prospector2html
       - name: Semgrep scan (SARIF y JSON)
         run: |
           semgrep scan --config="p/default" --sarif --output=report.sarif --metrics=off

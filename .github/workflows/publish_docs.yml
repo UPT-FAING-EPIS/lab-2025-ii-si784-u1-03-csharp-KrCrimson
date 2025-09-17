@@ -1,4 +1,4 @@
-name: Release Version
+name: docfx
 on:
   push:
     tags:

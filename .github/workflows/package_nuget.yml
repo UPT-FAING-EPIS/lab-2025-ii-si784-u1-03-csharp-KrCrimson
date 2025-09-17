@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Ejecutar pruebas
-        run: dotnet test --collect:"XPlat Code Coverage"
+        run: dotnet test Bank/Bank.sln --collect:"XPlat Code Coverage"
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
