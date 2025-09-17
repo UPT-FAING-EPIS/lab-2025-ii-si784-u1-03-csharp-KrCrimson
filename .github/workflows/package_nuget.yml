@@ -20,4 +20,4 @@ jobs:
       - name: Listar paquetes generados
         run: ls -l nuget
       - name: Publicar paquete en GitHub Packages
-        run: dotnet nuget push nuget/*.nupkg --source "https://nuget.pkg.github.com/krcrimson/index.json" --api-key ${{ secrets.GH_PACKAGES_TOKEN }}
+        run: dotnet nuget push nuget/*.nupkg --source "https://nuget.pkg.github.com/krcrimson/index.json" --api-key ${{ secrets.GHTOKEN }}
